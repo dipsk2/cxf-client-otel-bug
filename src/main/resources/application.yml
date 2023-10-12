@@ -1,0 +1,11 @@
+wiremock.server.port: 8888
+webservice.client.url: http://localhost:${wiremock.server.port}/mock-uri
+spring:
+  application:
+    name: cxf-client-otel
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging.pattern.level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
